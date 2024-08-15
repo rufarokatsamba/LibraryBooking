@@ -1,4 +1,4 @@
-namespace Library.Domain.Book;
+namespace Library.Domain.Books;
 
 public enum Category
 {

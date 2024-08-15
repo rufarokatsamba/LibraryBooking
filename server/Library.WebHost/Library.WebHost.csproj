@@ -15,4 +15,8 @@
     <Folder Include="Controllers\Student\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Domain\Library.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
