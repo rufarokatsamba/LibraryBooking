@@ -8,16 +8,14 @@ public class GetBookUseCase: IGetBookUseCase
     {
         _bookSqlGateway = sqlGateway;
     }
-    public Task<bool> CanExecute()
+
+    public Task Execute(IPresenter<GetBookResponse> presenter, GetBookRequest request)
     {
-        //TODO: Here we check business rules like validation like permissions to Execute, may also add validation
         throw new NotImplementedException();
     }
 
-    public Task<GetBookResponse> Execute(GetBookRequest request)
+    public Task<bool> CanExecute(IErrorPresenter presenter, GetBookRequest request)
     {
-        //TODO: Here we execute business logic
-        _bookSqlGateway.GetBook(request.BookId);
-        return new Task<GetBookResponse>(new BookDto());
+        throw new NotImplementedException();
     }
 }
