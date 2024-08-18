@@ -10,19 +10,20 @@ namespace Library.WebHost.Controllers.Book
     public class GetBookController : ControllerBase
     {
         private readonly IGetBookUseCase _getBookUseCase;
-        public GetBookController(IGetBookUseCase getBookUseCase)
+        private readonly IUseCaseExecutor _useCaseExecutor;
+        private readonly IActionResultPresenter<GetBookResponse> _presenter;
+        public GetBookController(IGetBookUseCase getBookUseCase, IUseCaseExecutor useCaseExecutor, IActionResultPresenter<GetBookResponse> presenter)
         {
             _getBookUseCase = getBookUseCase;
+            _useCaseExecutor = useCaseExecutor;
+            _presenter = presenter;
         }
         // GET api/<AddBookController>/5
         [HttpGet("{id}")]
-        public async Task<GetBookResponse?> Get(GetBookRequest request)
+        public async Task<IActionResult> Get(GetBookRequest request)
         {
-            if (await _getBookUseCase.CanExecute())
-            {
-                return await _getBookUseCase.Execute(request);
-            }
-            return await Task.FromResult<GetBookResponse?>(null);
+            await _useCaseExecutor.Execute(_getBookUseCase, request,_presenter);
+            return _presenter.Render();
         }
     }
 }

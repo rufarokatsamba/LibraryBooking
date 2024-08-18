@@ -1,13 +1,6 @@
 namespace Library.Domain.Books.GetBook;
 
-public interface IGetBookUseCase
+public interface IGetBookUseCase : IUseCase<GetBookRequest, GetBookResponse>
 {
-    Task<bool> CanExecute();
-    Task<GetBookResponse> Execute(GetBookRequest request);
+   
 }
-    
-    
-    
-
-
-
