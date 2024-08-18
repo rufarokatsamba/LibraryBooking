@@ -1,8 +1,15 @@
+using Library.Domain.Books.GetBook;
+using Library.Integration.Books;
+using Library.WebHost.Controllers.Book;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IUseCaseExecutor,UseCaseExecutor>();
+builder.Services.AddScoped<IGetBookUseCase,GetBookUseCase>();
+builder.Services.AddScoped<IBookSqlGateway,BookSqlGateway>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
