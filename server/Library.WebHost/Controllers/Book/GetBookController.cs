@@ -20,10 +20,12 @@ namespace Library.WebHost.Controllers.Book
         }
         // GET api/<AddBookController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(GetBookRequest request)
+        public async Task<IActionResult> Get(Guid id)
         {
+            var request = new GetBookRequest(id);
             await _useCaseExecutor.Execute(_getBookUseCase, request,_presenter);
             return _presenter.Render();
         }
     }
+     
 }

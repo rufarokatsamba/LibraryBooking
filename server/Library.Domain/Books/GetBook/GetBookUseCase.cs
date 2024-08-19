@@ -11,11 +11,12 @@ public class GetBookUseCase: IGetBookUseCase
 
     public Task Execute(IPresenter<GetBookResponse> presenter, GetBookRequest request)
     {
-        throw new NotImplementedException();
+        presenter.SuccessFull(new GetBookResponse("Hello World!"));
+        return Task.CompletedTask;
     }
 
     public Task<bool> CanExecute(IErrorPresenter presenter, GetBookRequest request)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(true);
     }
 }

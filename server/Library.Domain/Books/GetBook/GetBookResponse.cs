@@ -1,6 +1,6 @@
 namespace Library.Domain.Books.GetBook;
 
-public record GetBookResponse(BookDto book);
+public record GetBookResponse(string message);
 
 public class BookDto
 {
