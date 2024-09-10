@@ -2,11 +2,11 @@ namespace Library.Domain.Books.GetBook;
 
 public class GetBookUseCase: IGetBookUseCase
 {
-    private readonly IBookSqlGateway _bookSqlGateway;
+    private readonly IBookGateway _bookGateway;
     
-    public GetBookUseCase(IBookSqlGateway sqlGateway)
+    public GetBookUseCase(IBookGateway gateway)
     {
-        _bookSqlGateway = sqlGateway;
+        _bookGateway = gateway;
     }
 
     public Task Execute(IPresenter<GetBookResponse> presenter, GetBookRequest request)

@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<IBookSqlGateway,BookSqlGateway>();
+builder.Services.AddScoped<IBookGateway,BookGateway>();
 builder.Services.AddUseCases();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
