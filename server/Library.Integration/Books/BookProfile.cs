@@ -10,5 +10,6 @@ public class BookProfile : Profile
     public BookProfile()
     {
         CreateMap<SqlBookModel, Book>();
+        CreateMap<Book, SqlBookModel>(); 
     }
 }

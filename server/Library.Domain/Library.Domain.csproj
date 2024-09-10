@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Books\AddBook\" />
     <Folder Include="Books\DeleteBook\" />
-    <Folder Include="Books\GetBooks\" />
     <Folder Include="Books\UpdateBook\" />
     <Folder Include="Gateways\" />
     <Folder Include="Models\" />
@@ -17,6 +16,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library.Infrastructure\Library.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
