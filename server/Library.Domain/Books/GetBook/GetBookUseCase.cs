@@ -1,18 +1,22 @@
+using AutoMapper;
+
 namespace Library.Domain.Books.GetBook;
 
 public class GetBookUseCase: IGetBookUseCase
 {
     private readonly IBookGateway _bookGateway;
-    
-    public GetBookUseCase(IBookGateway gateway)
+    private readonly IMapper _mapper;
+    public GetBookUseCase(IBookGateway gateway, IMapper mapper)
     {
         _bookGateway = gateway;
+        _mapper = mapper;
     }
 
-    public Task Execute(IPresenter<GetBookResponse> presenter, GetBookRequest request)
+    public async Task Execute(IPresenter<GetBookResponse> presenter, GetBookRequest request)
     {
-        presenter.SuccessFull(new GetBookResponse("Hello World!"));
-        return Task.CompletedTask;
+        var book = await _bookGateway.GetBook(request.BookId);
+        var bookDto = _mapper.Map<BookDto>(book);
+        presenter.SuccessFull(new GetBookResponse(bookDto));
     }
 
     public Task<bool> CanExecute(IErrorPresenter presenter, GetBookRequest request)

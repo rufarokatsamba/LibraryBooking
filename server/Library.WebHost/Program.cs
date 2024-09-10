@@ -1,3 +1,4 @@
+using Library.Domain;
 using Library.Domain.Books.GetBook;
 using Library.Integration;
 using Library.Integration.Books;
@@ -15,6 +16,7 @@ builder.Services.AddUseCases();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
+builder.Services.ConfigureDomainServices(builder.Configuration);
  
 var app = builder.Build();
 

@@ -5,7 +5,7 @@ namespace Library.Domain;
 
 public static class LibraryIntegrationRegistration
 {
-    public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services,
+    public static IServiceCollection ConfigureDomainServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         // Register AutoMapper
