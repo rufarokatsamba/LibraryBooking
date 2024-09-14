@@ -9,7 +9,7 @@ namespace Library.Integration
     {
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //register dbcontext and add repositories to our service collections
+            services.AddMemoryCache();
             services.AddDbContext<BooksDbContext>(options =>
                 options.UseSqlServer(
                     configuration.GetConnectionString("LibraryDatabase")));
