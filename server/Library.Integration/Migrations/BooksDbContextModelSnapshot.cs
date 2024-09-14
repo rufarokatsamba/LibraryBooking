@@ -17,7 +17,6 @@ namespace Library.Integration.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("inventory")
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -57,12 +56,12 @@ namespace Library.Integration.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books", "inventory");
+                    b.ToTable("Books");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a4b07a08-a880-4b74-9c6f-05b6d3b643fc"),
+                            Id = new Guid("57dafdad-9412-49aa-94c0-ab9610949d11"),
                             Author = "Book 1 Author",
                             Available = 1,
                             BookName = "Book 1",
@@ -73,7 +72,7 @@ namespace Library.Integration.Migrations
                         },
                         new
                         {
-                            Id = new Guid("03ede358-9230-4043-a311-1dd8cb4d5822"),
+                            Id = new Guid("b7194eb7-02d7-4e75-bb1d-802417e1c80d"),
                             Author = "Book 2 Author",
                             Available = 1,
                             BookName = "Book 2",

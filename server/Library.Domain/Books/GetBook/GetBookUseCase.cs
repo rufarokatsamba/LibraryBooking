@@ -14,6 +14,7 @@ public class GetBookUseCase: IGetBookUseCase
 
     public async Task Execute(IPresenter<GetBookResponse> presenter, GetBookRequest request)
     {
+        //var book = await _bookGateway.GetBook(request.BookId);
         var book = await _bookGateway.GetBook(request.BookId);
         var bookDto = _mapper.Map<BookDto>(book);
         presenter.SuccessFull(new GetBookResponse(bookDto));

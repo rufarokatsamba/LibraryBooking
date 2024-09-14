@@ -23,7 +23,6 @@ public class BooksDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.HasDefaultSchema("inventory");
         modelBuilder.Entity<SqlBookModel>().HasData(SeedBooks);
     }
 
