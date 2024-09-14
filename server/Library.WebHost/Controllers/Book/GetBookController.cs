@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Library.WebHost.Controllers.Book
 {
-    [Route("api/[controller]")]
+    [Route("api/get-book")]
     [ApiController]
     public class GetBookController : ControllerBase
     {

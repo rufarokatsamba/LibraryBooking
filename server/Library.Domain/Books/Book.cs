@@ -2,14 +2,14 @@
 {
     public class Book
     {
-        private string BookName { get; set; } = null!;
-        private string Author { get; set; }= null!;
-        private string Isbn { get; set; }= null!;
-        private string Publisher { get; init; }= null!;
+        public string BookName { get; private set; } = null!;
+        public string Author { get; private set; } = null!;
+        public string Isbn { get; private set; } = null!;
+        public string Publisher { get; init; } = null!;
         public Category Category { get; init; }
-        private string Edition { get; init; }= null!;
-        private Guid Id { get; init; }
-        public Available Available { get; set; }
+        public string Edition { get; init; } = null!;
+        public Guid Id { get; init; }
+        public Available Available { get; private set; }
 
         public static Book CreateNewBook(string bookName, string author, string isbn,Category category ,string publisher, string edition)
         {
