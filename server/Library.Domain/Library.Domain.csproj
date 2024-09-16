@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Books\AddBook\" />
-    <Folder Include="Books\DeleteBook\" />
     <Folder Include="Books\UpdateBook\" />
     <Folder Include="Gateways\" />
     <Folder Include="Models\" />

@@ -1,4 +1,5 @@
 using Library.Domain;
+using Library.Domain.Books;
 using Library.Domain.Books.GetBook;
 using Library.Integration;
 using Library.Integration.Books;

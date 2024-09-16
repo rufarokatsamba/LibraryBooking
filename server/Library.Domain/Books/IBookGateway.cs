@@ -1,4 +1,4 @@
-namespace Library.Domain.Books.GetBook;
+namespace Library.Domain.Books;
 
 public interface IBookGateway
 {
