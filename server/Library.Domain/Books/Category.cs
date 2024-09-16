@@ -8,5 +8,6 @@ public enum Category
     Biology,
     Languages,
     History,
-    Documentary
+    Documentary,
+    Non
 }
