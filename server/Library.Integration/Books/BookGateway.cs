@@ -1,7 +1,9 @@
 using AutoMapper;
 using Library.Domain.Books;
 using Library.Domain.Books.GetBook;
+using Library.Infrastructure;
 using Library.Integration.Books.Models;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 namespace Library.Integration.Books;
@@ -11,12 +13,14 @@ public class BookGateway: IBookGateway
     private readonly BooksDbContext _context;
     private readonly IMapper _mapper;
     private readonly IMemoryCache _cache;
+    private readonly IMediator _mediator;
 
-    public BookGateway(BooksDbContext context, IMapper mapper, IMemoryCache cache)
+    public BookGateway(BooksDbContext context, IMapper mapper, IMemoryCache cache, IMediator mediator)
     {
         _context = context;
         _mapper = mapper;
         _cache = cache;
+        _mediator = mediator;
     }
     public Task<Book> GetBook(Guid bookId)
     {
@@ -40,6 +44,18 @@ public class BookGateway: IBookGateway
     {
         var sqlBookModel = _mapper.Map<SqlBookModel>(book);
         _context.Books.Add(sqlBookModel);
+        // Dispatch Domain Events collection.
+        // Choices:
+        // A) Right BEFORE committing data (EF SaveChanges) into the DB. This makes
+        // a single transaction including side effects from the domain event
+        // handlers that are using the same DbContext with Scope lifetime
+        // B) Right AFTER committing data (EF SaveChanges) into the DB. This makes
+        // multiple transactions. You will need to handle eventual consistency and
+        // compensatory actions in case of failures.
+        await _mediator.DispatchDomainEventsAsync(_context);
+
+        // After this line runs, all the changes (from the Command Handler and Domain
+        // event handlers) performed through the DbContext will be committed
         await _context.SaveChangesAsync();
     }
     public async Task<List<Book>> GetBooks(int pageNumber, int pageSize, int skip = 0)

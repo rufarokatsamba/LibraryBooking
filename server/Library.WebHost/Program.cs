@@ -5,6 +5,7 @@ using Library.Integration;
 using Library.Integration.Books;
 using Library.WebHost.Controllers.Book;
 using Library.WebHost.Extensions.Ioc;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
